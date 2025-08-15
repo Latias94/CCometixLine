@@ -13,6 +13,7 @@ pub struct SegmentsConfig {
     pub git: bool,
     pub model: bool,
     pub usage: bool,
+    pub quota: bool,
 }
 
 // Data structures compatible with existing main.rs
