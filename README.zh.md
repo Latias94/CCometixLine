@@ -58,14 +58,14 @@ npm update -g @cometix/ccline
 
 ### 手动安装
 
-或者从 [Releases](https://github.com/Haleclipse/CCometixLine/releases) 手动下载：
+或者从 [Releases](https://github.com/Latias94/CCometixLine/releases) 手动下载：
 
 #### Linux
 
 #### 选项 1: 动态链接版本（推荐）
 ```bash
 mkdir -p ~/.claude/ccline
-wget https://github.com/Haleclipse/CCometixLine/releases/latest/download/ccline-linux-x64.tar.gz
+wget https://github.com/Latias94/CCometixLine/releases/latest/download/ccline-linux-x64.tar.gz
 tar -xzf ccline-linux-x64.tar.gz
 cp ccline ~/.claude/ccline/
 chmod +x ~/.claude/ccline/ccline
@@ -75,7 +75,7 @@ chmod +x ~/.claude/ccline/ccline
 #### 选项 2: 静态链接版本（通用兼容）
 ```bash
 mkdir -p ~/.claude/ccline
-wget https://github.com/Haleclipse/CCometixLine/releases/latest/download/ccline-linux-x64-static.tar.gz
+wget https://github.com/Latias94/CCometixLine/releases/latest/download/ccline-linux-x64-static.tar.gz
 tar -xzf ccline-linux-x64-static.tar.gz
 cp ccline ~/.claude/ccline/
 chmod +x ~/.claude/ccline/ccline
@@ -86,7 +86,7 @@ chmod +x ~/.claude/ccline/ccline
 
 ```bash  
 mkdir -p ~/.claude/ccline
-wget https://github.com/Haleclipse/CCometixLine/releases/latest/download/ccline-macos-x64.tar.gz
+wget https://github.com/Latias94/CCometixLine/releases/latest/download/ccline-macos-x64.tar.gz
 tar -xzf ccline-macos-x64.tar.gz
 cp ccline ~/.claude/ccline/
 chmod +x ~/.claude/ccline/ccline
@@ -96,7 +96,7 @@ chmod +x ~/.claude/ccline/ccline
 
 ```bash
 mkdir -p ~/.claude/ccline  
-wget https://github.com/Haleclipse/CCometixLine/releases/latest/download/ccline-macos-arm64.tar.gz
+wget https://github.com/Latias94/CCometixLine/releases/latest/download/ccline-macos-arm64.tar.gz
 tar -xzf ccline-macos-arm64.tar.gz
 cp ccline ~/.claude/ccline/
 chmod +x ~/.claude/ccline/ccline
@@ -107,7 +107,7 @@ chmod +x ~/.claude/ccline/ccline
 ```powershell
 # 创建目录并下载
 New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.claude\ccline"
-Invoke-WebRequest -Uri "https://github.com/Haleclipse/CCometixLine/releases/latest/download/ccline-windows-x64.zip" -OutFile "ccline-windows-x64.zip"
+Invoke-WebRequest -Uri "https://github.com/Latias94/CCometixLine/releases/latest/download/ccline-windows-x64.zip" -OutFile "ccline-windows-x64.zip"
 Expand-Archive -Path "ccline-windows-x64.zip" -DestinationPath "."
 Move-Item "ccline.exe" "$env:USERPROFILE\.claude\ccline\"
 ```
