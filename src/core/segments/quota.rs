@@ -58,6 +58,12 @@ pub struct QuotaSegment {
     info_url: Option<String>,
 }
 
+impl Default for QuotaSegment {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl QuotaSegment {
     pub fn new() -> Self {
         let (api_key, base_url, info_url) = Self::load_api_config();
