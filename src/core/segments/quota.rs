@@ -1,5 +1,5 @@
-use super::Segment;
-use crate::config::InputData;
+use super::{Segment, SegmentData};
+use crate::config::{InputData, SegmentId};
 use serde::{Deserialize, Serialize};
 use std::fs;
 use std::path::PathBuf;
@@ -59,10 +59,10 @@ pub struct QuotaSegment {
 }
 
 impl QuotaSegment {
-    pub fn new(enabled: bool) -> Self {
+    pub fn new() -> Self {
         let (api_key, base_url, info_url) = Self::load_api_config();
         Self {
-            enabled,
+            enabled: true,
             api_key,
             base_url,
             info_url,
@@ -211,21 +211,37 @@ impl QuotaSegment {
 }
 
 impl Segment for QuotaSegment {
-    fn render(&self, _input: &InputData) -> String {
+    fn collect(&self, _input: &InputData) -> Option<SegmentData> {
         if !self.enabled || self.api_key.is_none() {
-            return String::new();
+            return None;
         }
 
         // Try to fetch quota (from cache or API)
         if let Some(quota) = self.fetch_quota() {
-            self.format_quota(&quota)
+            let mut metadata = std::collections::HashMap::new();
+            metadata.insert("remaining".to_string(), quota.remaining.to_string());
+            metadata.insert("total".to_string(), quota.total.to_string());
+            metadata.insert("used".to_string(), quota.used.to_string());
+
+            Some(SegmentData {
+                primary: self.format_quota(&quota),
+                secondary: String::new(),
+                metadata,
+            })
         } else {
             // If we can't get quota, show unknown
-            "◔ Quota: N/A".to_string()
+            let mut metadata = std::collections::HashMap::new();
+            metadata.insert("status".to_string(), "unavailable".to_string());
+
+            Some(SegmentData {
+                primary: "Quota: N/A".to_string(),
+                secondary: String::new(),
+                metadata,
+            })
         }
     }
 
-    fn enabled(&self) -> bool {
-        self.enabled && self.api_key.is_some()
+    fn id(&self) -> SegmentId {
+        SegmentId::Quota
     }
 }

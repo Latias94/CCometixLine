@@ -127,6 +127,7 @@ impl ThemePresets {
                 Self::directory_segment(),
                 Self::git_segment(),
                 Self::usage_segment(),
+                Self::quota_segment(),
             ],
             theme: "default".to_string(),
         }
@@ -208,6 +209,24 @@ impl ThemePresets {
         }
     }
 
+    fn quota_segment() -> SegmentConfig {
+        SegmentConfig {
+            id: SegmentId::Quota,
+            enabled: true,
+            icon: IconConfig {
+                plain: "💰".to_string(),
+                nerd_font: "\u{f0d6}".to_string(),
+            },
+            colors: ColorConfig {
+                icon: Some(AnsiColor::Color16 { c16: 11 }), // Yellow
+                text: Some(AnsiColor::Color16 { c16: 11 }),
+                background: None,
+            },
+            styles: TextStyleConfig::default(),
+            options: HashMap::new(),
+        }
+    }
+
     pub fn get_minimal() -> Config {
         Config {
             style: StyleConfig {
@@ -219,6 +238,7 @@ impl ThemePresets {
                 Self::minimal_directory_segment(),
                 Self::minimal_git_segment(),
                 Self::minimal_usage_segment(),
+                Self::minimal_quota_segment(),
             ],
             theme: "minimal".to_string(),
         }
@@ -235,6 +255,7 @@ impl ThemePresets {
                 Self::gruvbox_directory_segment(),
                 Self::gruvbox_git_segment(),
                 Self::gruvbox_usage_segment(),
+                Self::gruvbox_quota_segment(),
             ],
             theme: "gruvbox".to_string(),
         }
@@ -251,6 +272,7 @@ impl ThemePresets {
                 Self::nord_directory_segment(),
                 Self::nord_git_segment(),
                 Self::nord_usage_segment(),
+                Self::nord_quota_segment(),
             ],
             theme: "nord".to_string(),
         }
@@ -333,6 +355,24 @@ impl ThemePresets {
         }
     }
 
+    fn minimal_quota_segment() -> SegmentConfig {
+        SegmentConfig {
+            id: SegmentId::Quota,
+            enabled: true,
+            icon: IconConfig {
+                plain: "◔".to_string(),
+                nerd_font: "\u{f0d6}".to_string(),
+            },
+            colors: ColorConfig {
+                icon: Some(AnsiColor::Color16 { c16: 11 }),
+                text: Some(AnsiColor::Color16 { c16: 11 }),
+                background: None,
+            },
+            styles: TextStyleConfig::default(),
+            options: HashMap::new(),
+        }
+    }
+
     // Gruvbox theme segments
     fn gruvbox_model_segment() -> SegmentConfig {
         SegmentConfig {
@@ -403,6 +443,24 @@ impl ThemePresets {
             colors: ColorConfig {
                 icon: Some(AnsiColor::Color16 { c16: 5 }),
                 text: Some(AnsiColor::Color16 { c16: 5 }),
+                background: None,
+            },
+            styles: TextStyleConfig { text_bold: true },
+            options: HashMap::new(),
+        }
+    }
+
+    fn gruvbox_quota_segment() -> SegmentConfig {
+        SegmentConfig {
+            id: SegmentId::Quota,
+            enabled: true,
+            icon: IconConfig {
+                plain: "💰".to_string(),
+                nerd_font: "\u{f0d6}".to_string(),
+            },
+            colors: ColorConfig {
+                icon: Some(AnsiColor::Color16 { c16: 3 }),
+                text: Some(AnsiColor::Color16 { c16: 3 }),
                 background: None,
             },
             styles: TextStyleConfig { text_bold: true },
@@ -528,6 +586,36 @@ impl ThemePresets {
                     r: 180,
                     g: 142,
                     b: 173,
+                }),
+            },
+            styles: TextStyleConfig::default(),
+            options: HashMap::new(),
+        }
+    }
+
+    fn nord_quota_segment() -> SegmentConfig {
+        SegmentConfig {
+            id: SegmentId::Quota,
+            enabled: true,
+            icon: IconConfig {
+                plain: "💰".to_string(),
+                nerd_font: "\u{f0d6}".to_string(),
+            },
+            colors: ColorConfig {
+                icon: Some(AnsiColor::Rgb {
+                    r: 46,
+                    g: 52,
+                    b: 64,
+                }),
+                text: Some(AnsiColor::Rgb {
+                    r: 46,
+                    g: 52,
+                    b: 64,
+                }),
+                background: Some(AnsiColor::Rgb {
+                    r: 235,
+                    g: 203,
+                    b: 139,
                 }),
             },
             styles: TextStyleConfig::default(),
